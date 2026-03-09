@@ -57,6 +57,16 @@ public class ProductController {
         productRepository.save(product);
         return "redirect:/index";
     }
+    @PostMapping("/save")
+    public String save (Product product){
+        productRepository.save(product);
+        return "redirect:/index";
+    }
+    @GetMapping("/new")
+    public String newProductForm(Model model){
+        model.addAttribute("product", new Product());
+        return "newProduct";
+    }
 
 
 }
