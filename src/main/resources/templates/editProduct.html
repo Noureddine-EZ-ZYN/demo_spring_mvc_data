@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/webjars/bootstrap/5.3.5/css/bootstrap.min.css">
+    <title>Edit Product</title>
+</head>
+
+<body>
+
+<div class="container p-4">
+
+    <h3>Edit Product</h3>
+
+    <form th:action="@{/update}" method="post">
+
+        <input type="hidden" name="id" th:value="${product.id}">
+
+        <div class="mb-3">
+            <label>Name</label>
+            <input type="text" name="name" class="form-control"
+                   th:value="${product.name}">
+        </div>
+
+        <div class="mb-3">
+            <label>Price</label>
+            <input type="text" name="prix" class="form-control"
+                   th:value="${product.prix}">
+        </div>
+
+        <div class="mb-3">
+            <label>Quantity</label>
+            <input type="text" name="quantite" class="form-control"
+                   th:value="${product.quantite}">
+        </div>
+
+        <button class="btn btn-primary">Update</button>
+
+    </form>
+
+</div>
+
+</body>
+</html>

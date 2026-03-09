@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/5.3.5/css/bootstrap.min.css">
+    <title>Products</title>
+</head>
+<body>
+<div class="p-3">
+    <div class="p-3">
+
+        <form th:action="@{/index}" method="get" class="mb-3">
+
+            <input type="text" name="keyword" placeholder="Search product..."  th:value="${keyword}"
+                   class="form-control w-25 d-inline">
+
+            <button class="btn btn-primary">Search</button>
+
+        </form>
+
+        <table class="table">
+    <table class="table">
+        <thead>
+        <th>ID</th><th>Name</th><th>Price</th><th>Quantity</th><th>Actions</th>
+        </thead>
+        <tbody>
+        <tr th:each="p:${productList}">
+            <td th:text="${p.id}"></td>
+            <td th:text="${p.name}"></td>
+            <td th:text="${p.prix}"></td>
+            <td th:text="${p.quantite}"></td>
+            <td>
+                <a class="btn btn-danger" onclick="return confirm('Etes vous sure?')" th:href="@{/delete(id=${p.id})}">Delete</a>
+
+                <a class="btn btn-warning" th:href="@{/edit(id=${p.id})}">Edit</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+            <ul class="nav nav-pills">
+
+                <li th:each="page,status : ${pages}">
+                    <a th:class="${status.index==currentPage?'btn btn-info':'btn btn-outline-info'}"
+                       th:href="@{/index(page=${status.index},keyword=${keyword})}"
+                       th:text="${status.index}">
+                    </a>
+                </li>
+
+            </ul>
+</div>
+</body>
+</html>
