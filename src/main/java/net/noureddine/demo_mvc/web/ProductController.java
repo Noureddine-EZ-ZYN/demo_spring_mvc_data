@@ -39,6 +39,10 @@ public class ProductController {
 
         return "index";
     }
+    @GetMapping("/login")
+    public String login(){
+        return "login";
+    }
     @GetMapping("/delete")
     public String delete(@RequestParam(name="id") Long id){
         productRepository.deleteById(id);
